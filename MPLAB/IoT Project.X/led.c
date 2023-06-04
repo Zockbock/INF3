@@ -1,8 +1,9 @@
 
 #include <xc.h>
+#include <avr/io.h>
 #include "led.h"
 
-#define LEDS_C_OFF PORTC &= ~(15 << 1);
+#define LEDS_C_OFF PORTC &= ~(15 << 2);
 #define LEDS_D_OFF PORTD &= ~(15 << 4);
 #define LED_B_OFF PORTB &= ~(1);
 
@@ -24,5 +25,11 @@ void init_led(void) {
     DDRD |= (1 << DDD7); // Configure PD7 as Output
     DDRB |= (1 << DDB0); // Configure PB0 as Output
 
-    leds_off();
+    leds_on();
+}
+
+void leds_on(void) {
+    PORTC |= (15 << 2);
+    PORTD |= (15 << 4);
+    PORTB |= 1;
 }
