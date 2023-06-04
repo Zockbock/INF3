@@ -1,0 +1,5 @@
+#define SPIWIFI       SPI  // The SPI port
+#define SPIWIFI_SS    10   // Chip select pin
+#define ESP32_RESETN  5    // Reset pin
+#define SPIWIFI_ACK   7    // a.k.a BUSY or READY pin
+#define ESP32_GPIO0   6
