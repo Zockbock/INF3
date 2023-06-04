@@ -16,10 +16,6 @@ void init(void) {
     sei();
 }
 
-ISR(PCINT0_vect) {
-    leds_off();
-}
-
 int main(void) {
     init_button();
     init_led();

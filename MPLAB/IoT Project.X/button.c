@@ -16,3 +16,6 @@ void init_button(void) {
     PCMSK0 |= 1 << PCINT1;
 }
 
+ISR(PCINT0_vect) {
+    leds_off();
+}
