@@ -11,15 +11,27 @@
 #include <avr/interrupt.h>
 #include "button.h"
 #include "led.h"
+#include "usart.h"
+
+#define F_CPU 16000000UL
+#include <util/delay.h>
 
 void init(void) {
-    sei();
+    
 }
 
 int main(void) {
     init_button();
     init_led();
-    
+    USART_Init(MYUBRR);
+//    unsigned char test = 1;
+    unsigned char val;
     while(1){
-    };
+//        test++;
+//        USART_Transmit(test);
+        _delay_ms(500);
+        val = USART_Receive();
+        _delay_ms(500);
+        USART_Transmit(val);
+    }
 }
