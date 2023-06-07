@@ -25,13 +25,19 @@ int main(void) {
     init_led();
     USART_Init(MYUBRR);
 //    unsigned char test = 1;
-    unsigned char val;
+    unsigned char val = 0;
     while(1){
 //        test++;
 //        USART_Transmit(test);
-        _delay_ms(500);
+//        _delay_ms(500);
         val = USART_Receive();
-        _delay_ms(500);
+        
+        if(val != 0) {
+            leds_off();
+        }
+        
+//        _delay_ms(500);
         USART_Transmit(val);
+        val = 0;
     }
 }
