@@ -22,8 +22,8 @@ void init(void) {
     init_button();
     init_led();
     USART_Init(MYUBRR);
-//    init_photoresistor();
-    init_microphone();
+    init_photoresistor();
+    //init_microphone();
 }
 
 int main(void) {
@@ -31,8 +31,10 @@ int main(void) {
 
     while (1) {
 
-//        _delay_ms(100);
+        //        _delay_ms(100);
         USART_Transmit(getMicValue());
+        //USART_Transmit(getPhotoValue());
+        
 
     }
 }

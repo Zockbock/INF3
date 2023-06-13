@@ -11,7 +11,7 @@ void init_microphone(void) {
     ADMUX &= ~(1 << MUX0);
     ADMUX &= ~(1 << MUX1);
     ADMUX &= ~(1 << MUX2);
-    ADMUX &= ~(1 << MUX3); //set Input to ADC1
+    ADMUX &= ~(1 << MUX3); //set Input to ADC0
 
     ADCSRB &= ~(1 << ADTS0);
     ADCSRB &= ~(1 << ADTS1);
