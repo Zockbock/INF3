@@ -12,32 +12,27 @@
 #include "button.h"
 #include "led.h"
 #include "usart.h"
+#include "photoresistor.h"
+#include "microphone.h"
 
 #define F_CPU 16000000UL
 #include <util/delay.h>
 
 void init(void) {
-    
-}
-
-int main(void) {
     init_button();
     init_led();
     USART_Init(MYUBRR);
-//    unsigned char test = 1;
-    unsigned char val = 0;
-    while(1){
-//        test++;
-//        USART_Transmit(test);
-//        _delay_ms(500);
-        val = USART_Receive();
-        
-        if(val != 0) {
-            leds_off();
-        }
-        
-//        _delay_ms(500);
-        USART_Transmit(val);
-        val = 0;
+//    init_photoresistor();
+    init_microphone();
+}
+
+int main(void) {
+    init();
+
+    while (1) {
+
+//        _delay_ms(100);
+        USART_Transmit(getMicValue());
+
     }
 }

@@ -1,17 +1,26 @@
-#include <SoftwareSerial.h>
+#include <HardwareSerial.h>
 
-#define rxPin 0
-#define txPin 1
+//#define rxPin 19
+//#define txPin 18
+#define FOSC 16000000UL  // Clock Speed
+#define BAUD 9600
+#define MYUBRR FOSC / 16 / BAUD - 1
 
-SoftwareSerial mySerial = SoftwareSerial(rxPin, txPin); // RX, TX
+//HardwareSerial SerialTFMini(1);
+//HardwareSerial SerialBrain(2);
+
+//HardwareSerial mySerial = HardwareSerial(); // RX, TX
+
+int receivedData;
 
 void setup() {
   // Begin serial communication
-  Serial.begin(9600);
-  mySerial.begin(9600);
+  Serial.begin(BAUD);
+  Serial1.begin(BAUD);
+  //mySerial.begin(MYUBRR);
 
-  pinMode(rxPin, INPUT);
-  pinMode(txPin, OUTPUT);
+  //pinMode(rxPin, INPUT);
+  //pinMode(txPin, OUTPUT);
 
 
 
@@ -20,21 +29,19 @@ void setup() {
 }
 
 void loop() {
-  mySerial.write(42);
- 
-  //Serial.println(mySerial.isListening());
-  //Serial.println(mySerial.available());
 
-  if (mySerial.available() > 0) {
+  receivedData = Serial1.read();
+  Serial.println((char)receivedData);
+ 
+  /**
+  if (Serial1.available() > 0) {
     // Read data from the software serial
-    char receivedData = mySerial.read();
+
 
     // Process received data as needed
     // ...
 
-    mySerial.write(42);
-
     // Transmit the received data back
-    mySerial.write(receivedData);
   }
+  **/
 }

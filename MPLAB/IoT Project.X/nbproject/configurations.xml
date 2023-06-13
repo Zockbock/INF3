@@ -7,6 +7,8 @@
       <itemPath>button.h</itemPath>
       <itemPath>led.h</itemPath>
       <itemPath>usart.h</itemPath>
+      <itemPath>photoresistor.h</itemPath>
+      <itemPath>microphone.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -19,6 +21,8 @@
       <itemPath>button.c</itemPath>
       <itemPath>led.c</itemPath>
       <itemPath>usart.c</itemPath>
+      <itemPath>photoresistor.c</itemPath>
+      <itemPath>microphone.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

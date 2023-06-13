@@ -15,7 +15,7 @@ build/default/debug/main.o.d build/default/debug/main.o: main.c \
  c:\program\ files\microchip\xc8\v2.40\avr\avr\include\avr\fuse.h \
  c:\program\ files\microchip\xc8\v2.40\avr\avr\include\avr\lock.h \
  c:\program\ files\microchip\xc8\v2.40\avr\avr\include\avr\interrupt.h \
- button.h led.h usart.h \
+ button.h led.h usart.h photoresistor.h microphone.h \
  c:\program\ files\microchip\xc8\v2.40\avr\avr\include\util\delay.h \
  c:\program\ files\microchip\xc8\v2.40\avr\avr\include\util\delay_basic.h \
  c:\program\ files\microchip\xc8\v2.40\avr\avr\include\math.h
@@ -57,6 +57,10 @@ button.h:
 led.h:
 
 usart.h:
+
+photoresistor.h:
+
+microphone.h:
 
 c:\program\ files\microchip\xc8\v2.40\avr\avr\include\util\delay.h:
 

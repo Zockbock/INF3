@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=main.c button.c led.c usart.c
+SOURCEFILES_QUOTED_IF_SPACED=main.c button.c led.c usart.c photoresistor.c microphone.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/button.o ${OBJECTDIR}/led.o ${OBJECTDIR}/usart.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/button.o.d ${OBJECTDIR}/led.o.d ${OBJECTDIR}/usart.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/button.o ${OBJECTDIR}/led.o ${OBJECTDIR}/usart.o ${OBJECTDIR}/photoresistor.o ${OBJECTDIR}/microphone.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/button.o.d ${OBJECTDIR}/led.o.d ${OBJECTDIR}/usart.o.d ${OBJECTDIR}/photoresistor.o.d ${OBJECTDIR}/microphone.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/button.o ${OBJECTDIR}/led.o ${OBJECTDIR}/usart.o
+OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/button.o ${OBJECTDIR}/led.o ${OBJECTDIR}/usart.o ${OBJECTDIR}/photoresistor.o ${OBJECTDIR}/microphone.o
 
 # Source Files
-SOURCEFILES=main.c button.c led.c usart.c
+SOURCEFILES=main.c button.c led.c usart.c photoresistor.c microphone.c
 
 
 
@@ -118,6 +118,18 @@ ${OBJECTDIR}/usart.o: usart.c  .generated_files/flags/default/e6ba4045f4e17e2d3b
 	@${RM} ${OBJECTDIR}/usart.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1 -g -DDEBUG  -gdwarf-2  -x c -D__$(MP_PROCESSOR_OPTION)__    -Wl,--gc-sections -O1 -ffunction-sections -fdata-sections -fshort-enums -fno-common -funsigned-char -funsigned-bitfields -Wall -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -gdwarf-3     -MD -MP -MF "${OBJECTDIR}/usart.o.d" -MT "${OBJECTDIR}/usart.o.d" -MT ${OBJECTDIR}/usart.o -o ${OBJECTDIR}/usart.o usart.c 
 	
+${OBJECTDIR}/photoresistor.o: photoresistor.c  .generated_files/flags/default/441ec7e97b4c06cc2c1ab578c785dc8dc970a0c5 .generated_files/flags/default/d7d17eeaecd0ffa33a5643989e6593c1cbbbffc
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/photoresistor.o.d 
+	@${RM} ${OBJECTDIR}/photoresistor.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1 -g -DDEBUG  -gdwarf-2  -x c -D__$(MP_PROCESSOR_OPTION)__    -Wl,--gc-sections -O1 -ffunction-sections -fdata-sections -fshort-enums -fno-common -funsigned-char -funsigned-bitfields -Wall -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -gdwarf-3     -MD -MP -MF "${OBJECTDIR}/photoresistor.o.d" -MT "${OBJECTDIR}/photoresistor.o.d" -MT ${OBJECTDIR}/photoresistor.o -o ${OBJECTDIR}/photoresistor.o photoresistor.c 
+	
+${OBJECTDIR}/microphone.o: microphone.c  .generated_files/flags/default/b1b073f87aa73f849bc02738f6cfc90682286c0 .generated_files/flags/default/d7d17eeaecd0ffa33a5643989e6593c1cbbbffc
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/microphone.o.d 
+	@${RM} ${OBJECTDIR}/microphone.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1 -g -DDEBUG  -gdwarf-2  -x c -D__$(MP_PROCESSOR_OPTION)__    -Wl,--gc-sections -O1 -ffunction-sections -fdata-sections -fshort-enums -fno-common -funsigned-char -funsigned-bitfields -Wall -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -gdwarf-3     -MD -MP -MF "${OBJECTDIR}/microphone.o.d" -MT "${OBJECTDIR}/microphone.o.d" -MT ${OBJECTDIR}/microphone.o -o ${OBJECTDIR}/microphone.o microphone.c 
+	
 else
 ${OBJECTDIR}/main.o: main.c  .generated_files/flags/default/122d49c07ccab55aa38e8e2f756137c81b7166f0 .generated_files/flags/default/d7d17eeaecd0ffa33a5643989e6593c1cbbbffc
 	@${MKDIR} "${OBJECTDIR}" 
@@ -142,6 +154,18 @@ ${OBJECTDIR}/usart.o: usart.c  .generated_files/flags/default/7842da0bc80632a4e5
 	@${RM} ${OBJECTDIR}/usart.o.d 
 	@${RM} ${OBJECTDIR}/usart.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -x c -D__$(MP_PROCESSOR_OPTION)__    -Wl,--gc-sections -O1 -ffunction-sections -fdata-sections -fshort-enums -fno-common -funsigned-char -funsigned-bitfields -Wall -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -gdwarf-3     -MD -MP -MF "${OBJECTDIR}/usart.o.d" -MT "${OBJECTDIR}/usart.o.d" -MT ${OBJECTDIR}/usart.o -o ${OBJECTDIR}/usart.o usart.c 
+	
+${OBJECTDIR}/photoresistor.o: photoresistor.c  .generated_files/flags/default/801bf002301cdb311101fd834677cd2639cb0fe7 .generated_files/flags/default/d7d17eeaecd0ffa33a5643989e6593c1cbbbffc
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/photoresistor.o.d 
+	@${RM} ${OBJECTDIR}/photoresistor.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -x c -D__$(MP_PROCESSOR_OPTION)__    -Wl,--gc-sections -O1 -ffunction-sections -fdata-sections -fshort-enums -fno-common -funsigned-char -funsigned-bitfields -Wall -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -gdwarf-3     -MD -MP -MF "${OBJECTDIR}/photoresistor.o.d" -MT "${OBJECTDIR}/photoresistor.o.d" -MT ${OBJECTDIR}/photoresistor.o -o ${OBJECTDIR}/photoresistor.o photoresistor.c 
+	
+${OBJECTDIR}/microphone.o: microphone.c  .generated_files/flags/default/8bc4d08e43cbe3cc3b797d562969004c5f147e66 .generated_files/flags/default/d7d17eeaecd0ffa33a5643989e6593c1cbbbffc
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/microphone.o.d 
+	@${RM} ${OBJECTDIR}/microphone.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -x c -D__$(MP_PROCESSOR_OPTION)__    -Wl,--gc-sections -O1 -ffunction-sections -fdata-sections -fshort-enums -fno-common -funsigned-char -funsigned-bitfields -Wall -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -gdwarf-3     -MD -MP -MF "${OBJECTDIR}/microphone.o.d" -MT "${OBJECTDIR}/microphone.o.d" -MT ${OBJECTDIR}/microphone.o -o ${OBJECTDIR}/microphone.o microphone.c 
 	
 endif
 
