@@ -7,9 +7,11 @@
 #include <xc.h> // include processor files - each processor file is guarded.  
 #include <avr/interrupt.h>
 #include "led.h"
+#include "photoresistor.h"
+#include "microphone.h"
 
 void init_button(void);
-
+void ADC_ToggleMux(void);
 
 #endif	/* BUTTON_H */
 

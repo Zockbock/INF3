@@ -5,8 +5,6 @@
 float photoValue;
 
 void init_photoresistor(void){
-    //ADC
-
     ADMUX |= (1 << REFS0); 
     ADMUX &= ~(1 << REFS1); //set voltage Reference to AVCC 5V
 
@@ -22,7 +20,7 @@ void init_photoresistor(void){
 
     ADCSRA |= (1 << ADPS2);
     ADCSRA |= (1 << ADPS1);
-    ADCSRA |= (1 <<  ADPS0); // set ADC prescaler to 128 for 125 kHz
+    ADCSRA |= (1 << ADPS0); // set ADC prescaler to 128 for 125 kHz
 
     ADCSRA |= (1 << ADIE); // enable ADC interrrupt
     ADCSRA |= (1 << ADATE); // enable ADC Auto Trigger
