@@ -3,6 +3,7 @@
 #include "microphone.h"
 
 float micValue;
+#define ADC _SFR_MEM16(0x78)
 
 void init_microphone(void) {
     ADMUX |= (1 << REFS0);

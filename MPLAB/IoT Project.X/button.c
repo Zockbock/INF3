@@ -3,6 +3,7 @@
 #include <avr/interrupt.h>
 #include "button.h"
 #include "led.h"
+#include "photoresistor.h"
 
 void init_button(void) {
 
@@ -17,5 +18,18 @@ void init_button(void) {
 }
 
 ISR(PCINT0_vect) {
-    leds_off();
+    //leds_off();
+    
+    ADC_ToggleMux();
+    
+}
+
+void ADC_ToggleMux(void) {
+    if(!(ADMUX & (1 << MUX1))) {
+        ADMUX |= (1 << MUX1); // select ADC1 as input
+        leds_off();
+    } else {
+        ADMUX &= ~(1 << MUX1); // select ADC0 as input
+        leds_on();
+    }
 }
