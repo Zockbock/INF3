@@ -28,21 +28,20 @@ ISR(PCINT0_vect) {
 
 void ADC_ToggleMux(void) {
     
-    USART_Transmit(255);
-     
+    ADCSRA &= ~(1 << ADEN); // ADC disable
+            
     if (!(ADMUX & (1 << MUX1))) {
         // switch to photoresistor 
         ADMUX |= (1 << MUX1); // select ADC1 as input
-        //        ADCSRA |= (1 << ADSC); // start first conversion
-        //        init_photoresistor();
         leds_off();
     } else 
 //        if (ADMUX & (1 << MUX1)) 
         {
         // switch to microphone
         ADMUX &= ~(1 << MUX1); // select ADC0 as input
-        //        ADCSRA |= (1 << ADSC); // start first conversion
-        //        init_microphone();
         leds_on();
     }
+    
+    ADCSRA |= (1 << ADEN); // ADC enable
+    ADCSRA |= (1 << ADSC); // start first conversion
 }
