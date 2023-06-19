@@ -25,8 +25,8 @@ void init(void) {
     ADCSRB |= (1 << ACME);
     
     USART_Init(MYUBRR);
-    init_photoresistor();
-//    init_microphone();
+//    init_photoresistor();
+    init_microphone();
 }
 
 int main(void) {
