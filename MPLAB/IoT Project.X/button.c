@@ -5,6 +5,7 @@
 #include "led.h"
 #include "photoresistor.h"
 #include "microphone.h"
+#include "usart.h"
 
 void init_button(void) {
 
@@ -26,6 +27,9 @@ ISR(PCINT0_vect) {
 }
 
 void ADC_ToggleMux(void) {
+    
+    USART_Transmit(255);
+     
     if (!(ADMUX & (1 << MUX1))) {
         // switch to photoresistor 
         ADMUX |= (1 << MUX1); // select ADC1 as input

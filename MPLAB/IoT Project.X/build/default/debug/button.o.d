@@ -15,7 +15,7 @@ build/default/debug/button.o.d build/default/debug/button.o: button.c \
  c:\program\ files\microchip\xc8\v2.41\avr\avr\include\avr\fuse.h \
  c:\program\ files\microchip\xc8\v2.41\avr\avr\include\avr\lock.h \
  c:\program\ files\microchip\xc8\v2.41\avr\avr\include\avr\interrupt.h \
- button.h led.h photoresistor.h microphone.h
+ button.h led.h photoresistor.h microphone.h usart.h
 
 c:\program\ files\microchip\xc8\v2.41\avr\lib\gcc\avr\5.4.0\include\xc.h:
 
@@ -56,3 +56,5 @@ led.h:
 photoresistor.h:
 
 microphone.h:
+
+usart.h:
