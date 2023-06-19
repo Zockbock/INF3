@@ -1,5 +1,4 @@
-build/default/debug/photoresistor.o.d build/default/debug/photoresistor.o: \
- photoresistor.c \
+build/default/debug/adc.o.d build/default/debug/adc.o: adc.c \
  c:\program\ files\microchip\xc8\v2.41\avr\lib\gcc\avr\5.4.0\include\xc.h \
  c:\program\ files\microchip\xc8\v2.41\avr\lib\gcc\avr\5.4.0\include\cci.h \
  c:\program\ files\microchip\xc8\v2.41\avr\avr\include\avr\io.h \
@@ -15,8 +14,8 @@ build/default/debug/photoresistor.o.d build/default/debug/photoresistor.o: \
  c:\program\ files\microchip\xc8\v2.41\avr\avr\include\avr\common.h \
  c:\program\ files\microchip\xc8\v2.41\avr\avr\include\avr\fuse.h \
  c:\program\ files\microchip\xc8\v2.41\avr\avr\include\avr\lock.h \
- photoresistor.h \
- c:\program\ files\microchip\xc8\v2.41\avr\avr\include\avr\interrupt.h
+ c:\program\ files\microchip\xc8\v2.41\avr\avr\include\avr\interrupt.h \
+ adc.h
 
 c:\program\ files\microchip\xc8\v2.41\avr\lib\gcc\avr\5.4.0\include\xc.h:
 
@@ -48,6 +47,6 @@ c:\program\ files\microchip\xc8\v2.41\avr\avr\include\avr\fuse.h:
 
 c:\program\ files\microchip\xc8\v2.41\avr\avr\include\avr\lock.h:
 
-photoresistor.h:
-
 c:\program\ files\microchip\xc8\v2.41\avr\avr\include\avr\interrupt.h:
+
+adc.h:

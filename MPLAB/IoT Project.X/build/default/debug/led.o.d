@@ -13,7 +13,8 @@ build/default/debug/led.o.d build/default/debug/led.o: led.c \
  c:\program\ files\microchip\xc8\v2.41\avr\avr\include\avr\portpins.h \
  c:\program\ files\microchip\xc8\v2.41\avr\avr\include\avr\common.h \
  c:\program\ files\microchip\xc8\v2.41\avr\avr\include\avr\fuse.h \
- c:\program\ files\microchip\xc8\v2.41\avr\avr\include\avr\lock.h led.h
+ c:\program\ files\microchip\xc8\v2.41\avr\avr\include\avr\lock.h led.h \
+ usart.h
 
 c:\program\ files\microchip\xc8\v2.41\avr\lib\gcc\avr\5.4.0\include\xc.h:
 
@@ -46,3 +47,5 @@ c:\program\ files\microchip\xc8\v2.41\avr\avr\include\avr\fuse.h:
 c:\program\ files\microchip\xc8\v2.41\avr\avr\include\avr\lock.h:
 
 led.h:
+
+usart.h:

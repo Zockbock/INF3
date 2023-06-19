@@ -1,5 +1,4 @@
-build/default/debug/microphone.o.d build/default/debug/microphone.o: \
- microphone.c \
+build/default/production/adc.o.d build/default/production/adc.o: adc.c \
  c:\program\ files\microchip\xc8\v2.41\avr\lib\gcc\avr\5.4.0\include\xc.h \
  c:\program\ files\microchip\xc8\v2.41\avr\lib\gcc\avr\5.4.0\include\cci.h \
  c:\program\ files\microchip\xc8\v2.41\avr\avr\include\avr\io.h \
@@ -16,7 +15,7 @@ build/default/debug/microphone.o.d build/default/debug/microphone.o: \
  c:\program\ files\microchip\xc8\v2.41\avr\avr\include\avr\fuse.h \
  c:\program\ files\microchip\xc8\v2.41\avr\avr\include\avr\lock.h \
  c:\program\ files\microchip\xc8\v2.41\avr\avr\include\avr\interrupt.h \
- microphone.h
+ adc.h
 
 c:\program\ files\microchip\xc8\v2.41\avr\lib\gcc\avr\5.4.0\include\xc.h:
 
@@ -50,4 +49,4 @@ c:\program\ files\microchip\xc8\v2.41\avr\avr\include\avr\lock.h:
 
 c:\program\ files\microchip\xc8\v2.41\avr\avr\include\avr\interrupt.h:
 
-microphone.h:
+adc.h:
