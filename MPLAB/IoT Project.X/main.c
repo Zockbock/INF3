@@ -33,7 +33,7 @@ int main(void) {
     while (1) {
         float percVal = ((float)ADC / 255) * 100;
         LEDs_React(percVal);
-        USART_Transmit(percVal);
-        //        USART_Transmit(ADC);
+//        USART_Transmit(percVal);
+                USART_Transmit(ADC);
     }
 }
