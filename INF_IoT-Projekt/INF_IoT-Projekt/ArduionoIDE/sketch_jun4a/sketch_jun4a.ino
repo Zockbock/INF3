@@ -35,7 +35,7 @@ void loop() {
   }
 
   // Führen Sie MQTT-Schleifenfunktionen aus
-  mqttClient.loop();
+  //mqttClient.loop();
 
   // Fügen Sie hier Ihren eigenen Code hinzu
 }

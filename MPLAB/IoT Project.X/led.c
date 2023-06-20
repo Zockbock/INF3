@@ -2,6 +2,7 @@
 #include <xc.h>
 #include <avr/io.h>
 #include "led.h"
+#include "usart.h"
 
 #define LEDS_C_OFF PORTC &= ~(15 << 2);
 #define LEDS_D_OFF PORTD &= ~(15 << 4);
@@ -34,45 +35,40 @@ void leds_on(void) {
     PORTB |= 1;
 }
 
-/**
-void LEDs_React(int p) {  // p = percentage-value
+void LEDs_React(float p) { // p = percentage-value
     leds_off();
-    switch(p){
-        case p <= 11:
-            DDRC |= (1 << DDC2);
-            break;
-        case 11 < p <= 22:
-            DDRC |= (3 << DDC2);
-            break;
-        case 22 < p <= 33:
-            DDRC |= (7 << DDC2);
-            break;
-        case 33 < p <= 44:
-            DDRC |= (15 << DDC2);
-            break;
-        case 44 < p <= 55:
-            DDRC |= (15 << DDC2);
-            DDRD |= (1 << DDD4);
-            break;
-        case 55 < p <= 66:
-            DDRC |= (15 << DDC2);
-            DDRD |= (3 << DDD4);
-            break;
-        case 66 < p <= 77:
-            DDRC |= (15 << DDC2);
-            DDRD |= (7 << DDD4);
-            break;
-        case 77 < p <= 88:
-            DDRC |= (15 << DDC2);
-            DDRD |= (15 << DDD4);
-            break;
-        case 88 < p <= 100:
-            DDRC |= (15 << DDC2);
-            DDRD |= (15 << DDD4);
-            DDRB |= (1 << DDB0);
-            break;
-        default:
-            break;
+
+    if (p <= 11) {
+        PORTC |= (1 << 2);
+    }
+    if ((p > 11) && (p <= 22)) {
+        PORTC |= (3 << 2);
+    }
+    if ((22 < p) && (p <= 33)) {
+        PORTC |= (7 << 2);
+    }
+    if ((33 < p) && (p <= 44)) {
+        PORTC |= (15 << 2);
+    }
+    if ((44 < p) && (p <= 55)) {
+        PORTC |= (15 << 2);
+        PORTD |= (1 << 4);
+    }
+    if ((55 < p) && (p <= 66)) {
+        PORTC |= (15 << 2);
+        PORTD |= (3 << 4);
+    }
+    if ((66 < p) && (p <= 77)) {
+        PORTC |= (15 << 2);
+        PORTD |= (7 << 4);
+    }
+    if ((77 < p) && (p <= 88)) {
+        PORTC |= (15 << 2);
+        PORTD |= (15 << 4);
+    }
+    if ((88 < p) && (p <= 100)) {
+        PORTC |= (15 << 2);
+        PORTD |= (15 << 4);
+        PORTB |= 1;
     }
 }
- **/ 

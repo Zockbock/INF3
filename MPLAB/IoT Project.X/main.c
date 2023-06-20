@@ -12,8 +12,7 @@
 #include "button.h"
 #include "led.h"
 #include "usart.h"
-#include "photoresistor.h"
-#include "microphone.h"
+#include "adc.h"
 
 #define F_CPU 16000000UL
 #include <util/delay.h>
@@ -21,23 +20,20 @@
 void init(void) {
     init_button();
     init_led();
-    
+
     ADCSRB |= (1 << ACME);
-    
+
     USART_Init(MYUBRR);
-    //init_photoresistor();
-    init_microphone();
+    init_adc();
 }
 
 int main(void) {
     init();
 
     while (1) {
-
-        //        _delay_ms(100);
-        USART_Transmit(ADC);
-        //USART_Transmit(getPhotoValue());
-        
-
+        float percVal = ((float)ADC / 255) * 100;
+        LEDs_React(percVal);
+//        USART_Transmit(percVal);
+                USART_Transmit(ADC);
     }
 }

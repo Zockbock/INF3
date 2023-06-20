@@ -1,11 +1,8 @@
 #include <xc.h>
 #include <avr/interrupt.h>
-#include "microphone.h"
+#include "adc.h"
 
-float micValue;
-#define ADC _SFR_MEM16(0x78)
-
-void init_microphone(void) {
+void init_adc(void) {
     ADMUX |= (1 << REFS0);
     ADMUX &= ~(1 << REFS1); //set voltage Reference to AVCC 5V
 
@@ -31,9 +28,4 @@ void init_microphone(void) {
 }
 
 ISR(ADC_vect) {
-    micValue = ADC;
-}
-
-float getMicValue(void) {
-    return micValue;
 }
