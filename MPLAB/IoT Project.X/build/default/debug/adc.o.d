@@ -15,7 +15,7 @@ build/default/debug/adc.o.d build/default/debug/adc.o: adc.c \
  c:\program\ files\microchip\xc8\v2.41\avr\avr\include\avr\fuse.h \
  c:\program\ files\microchip\xc8\v2.41\avr\avr\include\avr\lock.h \
  c:\program\ files\microchip\xc8\v2.41\avr\avr\include\avr\interrupt.h \
- adc.h
+ adc.h usart.h
 
 c:\program\ files\microchip\xc8\v2.41\avr\lib\gcc\avr\5.4.0\include\xc.h:
 
@@ -50,3 +50,5 @@ c:\program\ files\microchip\xc8\v2.41\avr\avr\include\avr\lock.h:
 c:\program\ files\microchip\xc8\v2.41\avr\avr\include\avr\interrupt.h:
 
 adc.h:
+
+usart.h:

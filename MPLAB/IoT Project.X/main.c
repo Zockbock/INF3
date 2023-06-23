@@ -31,9 +31,11 @@ int main(void) {
     init();
 
     while (1) {
-        float percVal = ((float)ADC / 255) * 100;
-        LEDs_React(percVal);
-//        USART_Transmit(percVal);
-                USART_Transmit(ADC);
+//        double percVal = ((double) ADC / 1024) * 100;
+//        LEDs_React(percVal);
+        //        USART_Transmit((uint8_t)percVal);
+//        _delay_ms(100);
+//        double dB = (getADCVal() + 83.2073) / 11.003;
+        USART_Transmit(getADCVal());
     }
 }

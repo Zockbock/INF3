@@ -35,7 +35,7 @@ void leds_on(void) {
     PORTB |= 1;
 }
 
-void LEDs_React(float p) { // p = percentage-value
+void LEDs_React(double p) { // p = percentage-value
     leds_off();
 
     if (p <= 11) {

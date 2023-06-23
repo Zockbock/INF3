@@ -21,7 +21,7 @@
 void init_led(void);
 void leds_off(void);
 void leds_on(void);
-void LEDs_React(float p);
+void LEDs_React(double p);
 
 #endif	/* LED_H */
 
