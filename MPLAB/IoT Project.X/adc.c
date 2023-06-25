@@ -7,9 +7,11 @@
 #define MAX(a,b) ((a)>(b)?(a):(b))
 
 volatile uint8_t counter = 0;
-volatile uint16_t min = 1024;
+volatile uint16_t min = 255;
 volatile uint16_t max = 0;
 volatile uint8_t adcVal;
+
+volatile double data;
 
 void init_adc(void) {
     ADMUX |= (1 << REFS0);
@@ -43,18 +45,30 @@ ISR(ADC_vect) {
     if (ADMUX & (1 << MUX0)) {
         adcVal = ADCH;
     } else {
-        adcVal = ADCH;
-//        counter++;
-//        if (counter == 1) {
-//            min = 1024;
-//            max = 0;
-//        } else if (counter <= 10) {
-//            min = MIN(min, ADC);
-//            max = MAX(max, ADC);
+//        adcVal = ADC;
+        counter++;
+        if (counter == 1) {
+            min = 255;
+            max = 0;
+        } else if (counter <= 10) {
+            min = MIN(min, ADC);
+            max = MAX(max, ADC);
+        } else {
+            counter = 0;
+            adcVal = (max - min);
+//            USART_Transmit(adcVal);
+        }
+        
+//        if(counter <= 10) {
+//            data += ADCH;
 //        } else {
+//            data /= 10;
+////            adcVal = (data + 83.2073) / 11.003; //Convert ADC value to dB using Regression values
+//            adcVal = data;
 //            counter = 0;
-//            adcVal = (max - min);
+//            data = 0;
 //        }
+//        counter++;
 
     }
 }
