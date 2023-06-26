@@ -9,7 +9,7 @@ build/default/debug/adc.o.d build/default/debug/adc.o: adc.c \
  c:\program\ files\microchip\xc8\v2.40\avr\avr\include\stdint.h \
  c:\program\ files\microchip\xc8\v2.40\avr\avr\include\bits\alltypes.h \
  c:\program\ files\microchip\xc8\v2.40\avr\avr\include\bits\stdint.h \
- C:/Program\ Files/Microchip/xc8/v2.40/dfp/xc8/avr/include/avr/iom328p.h \
+ C:/Users/Jonas/.mchp_packs/Microchip/ATmega_DFP/3.0.158/xc8/avr/include/avr/iom328p.h \
  c:\program\ files\microchip\xc8\v2.40\avr\avr\include\avr\portpins.h \
  c:\program\ files\microchip\xc8\v2.40\avr\avr\include\avr\common.h \
  c:\program\ files\microchip\xc8\v2.40\avr\avr\include\avr\fuse.h \
@@ -37,7 +37,7 @@ c:\program\ files\microchip\xc8\v2.40\avr\avr\include\bits\alltypes.h:
 
 c:\program\ files\microchip\xc8\v2.40\avr\avr\include\bits\stdint.h:
 
-C:/Program\ Files/Microchip/xc8/v2.40/dfp/xc8/avr/include/avr/iom328p.h:
+C:/Users/Jonas/.mchp_packs/Microchip/ATmega_DFP/3.0.158/xc8/avr/include/avr/iom328p.h:
 
 c:\program\ files\microchip\xc8\v2.40\avr\avr\include\avr\portpins.h:
 

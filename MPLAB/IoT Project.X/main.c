@@ -44,8 +44,8 @@ int main(void) {
         
         USART_Transmit(getADCVal());
         _delay_ms(100);
-        LEDs_React(USART_Receive());
-        _delay_ms(100);
+//        LEDs_React(USART_Receive());
+//        _delay_ms(100);
         
 //        if(USART_Receive() == 42) {
 //            leds_off();
