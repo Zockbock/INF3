@@ -10,17 +10,16 @@
 #define ESP32_GPIO0   -1
 
 // values for UART communication:
-unsigned char currentMode = 'i'; // a = audio, i = illuminence
+unsigned char currentMode = 'a'; // a = audio, i = illuminence
 unsigned char audio = 'a';
 unsigned char illuminence = 'i';
-unsigned char illuminenceData;
-unsigned char audioData;
+unsigned char illuminenceData = 0;
+unsigned char audioData = 0;
 unsigned char mode;
 unsigned char percentage = 0;
 unsigned char nextPercentage= 0;
-
 unsigned char modeChange = 0;
-unsigned char changeIndicator = 105;
+unsigned char modeChangeIndicator = 101;
 
 ///////please enter your sensitive data in the Secret tab/arduino_secrets.h
 char ssid[] = SECRET_SSID;        // your network SSID
@@ -113,6 +112,9 @@ void loop() {
   {
     unsigned char receivedData = Serial.read();
 
+    if(receivedData == 255){
+      changeMode();
+    } 
     // Do something with received data
     if(currentMode == illuminence){
       illuminenceData = receivedData;
@@ -120,20 +122,15 @@ void loop() {
       audioData = receivedData;
     }
     if(Serial.availableForWrite()){
-    if(modeChange){
-      Serial.write(changeIndicator);
-      modeChange = 0;
-      Serial.print("uart transmit m: ");
-      Serial.println(currentMode);
-    } else {
-      Serial.write(percentage);
-      Serial.print("uart transmit p: ");
-      Serial.println(percentage);
+      if(modeChange){
+        Serial.write(modeChangeIndicator);
+        modeChange = 0;
+      } else {
+        Serial.write(percentage);
+      }
     }
-  }
     //Serial.write(currentMode);
   }
-  
   // ------------------- [UART] ---------------
 
   // ------------------- [PUBLISHER] ---------------
@@ -147,14 +144,10 @@ void loop() {
       mqttClient.beginMessage(topic2publish);
       mqttClient.print(illuminenceData);
       mqttClient.endMessage();
-      Serial.print("published illuminence data: ");
-      Serial.println(illuminenceData);
     } else { // currentMode == audio
       mqttClient.beginMessage(topic2publish2);
       mqttClient.print(audioData);
       mqttClient.endMessage();
-      Serial.print("published audio data: ");
-      Serial.println(audioData);
     }
     Serial.println();
   }
@@ -181,18 +174,23 @@ void onMqttMessage(int messageSize) {
       checkMode(mode);
     }
   }
+  //checkPercentage(nextPercentage);
+  //checkMode(mode);
   Serial.println();
   Serial.println();
 }
 // ------------------- [SUBSCRIBER] ---------------
 
- void checkPercentage(unsigned char p){
+ void checkPercentage2(unsigned char p){
   if(p != percentage){
-    percentage = p;
-    Serial.print("updated percentage value: ");
-    Serial.println(percentage);
+    if(p>100){
+      percentage = 100;
+    } else {
+      percentage = p;
+    }
   } else {
-    Serial.println("same percentage value transmitted");
+    Serial.print("no significant change, last transmitted percentage-value: ");
+    Serial.println(percentage);
   }
 }
 
@@ -200,12 +198,35 @@ void checkMode(unsigned char m){
   if(m != currentMode){
     if(m != audio && m != illuminence){
     } else {
-      currentMode = m;
       modeChange = 1;
-      Serial.print("updated mode (modeChange was set to 1): ");
-      Serial.println(currentMode);
+      currentMode = m;
     }
   } else {
-    Serial.println("same mode transmitted");
+  }
+}
+
+void changeMode(){
+  if(currentMode == audio){
+    currentMode = illuminence;
+  }
+  if(currentMode == illuminence){
+    currentMode = audio;
+  }
+}
+
+void checkPercentage(unsigned char p){
+  if(p<=100 && p>=0){  // value in expected range
+    if(p != percentage){
+      percentage = p;
+    } else {
+      Serial.print("no significant change, last transmitted percentage-value: ");
+      Serial.println(percentage);
+    }
+  } else {
+    if(p>100){
+      percentage = 100;
+    } else {
+      percentage = 0;
+    }
   }
 }

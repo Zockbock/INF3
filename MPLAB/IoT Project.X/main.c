@@ -13,11 +13,10 @@
 #include "led.h"
 #include "usart.h"
 #include "adc.h"
+#include "display.h"
 
 #define F_CPU 16000000UL
 #include <util/delay.h>
-
-unsigned char data_main = 0;
 
 void init(void) {
     init_button();
@@ -27,11 +26,14 @@ void init(void) {
 
     USART_Init(MYUBRR);
     init_adc();
+    
+    SPI_init();
+    Display_init();
 }
 
 int main(void) {
     init();
-
+    LEDs_React(50);
     while (1) {
 //        double percVal = ((double) ADC / 1024) * 100;
 //        LEDs_React(percVal);
@@ -42,10 +44,21 @@ int main(void) {
         
         
         
-        USART_Transmit(getADCVal());
-        _delay_ms(100);
-//        LEDs_React(USART_Receive());
-//        _delay_ms(100);
+        
+        // --------------------------------
+//        USART_Transmit(getADCVal());
+//        _delay_ms(200);
+//        unsigned char receivedData = USART_Receive();
+//        if(receivedData > 100){ //105 -> modeChangeIndicator
+//            ADC_ToggleMux();
+//        } else { // percentage-value
+//            LEDs_React(receivedData);
+//        }
+//        _delay_ms(200);
+        // ----------------------------------
+        
+        
+        
         
 //        if(USART_Receive() == 42) {
 //            leds_off();

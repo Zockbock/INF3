@@ -74,5 +74,8 @@ ISR(ADC_vect) {
 }
 
 uint8_t getADCVal(void) {
+    if(adcVal > 254){  // added.
+        adcVal = 254;
+    }
     return adcVal;
 }

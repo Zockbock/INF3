@@ -6,6 +6,8 @@
 #include "adc.h"
 #include "usart.h"
 
+#define TOGGLE_INT PCICR ^= (1 << PCIE0);
+
 void init_button(void) {
 
     DDRB &= ~(1 << DDB1); // Configure PB1 as Input BTN2
@@ -20,12 +22,16 @@ void init_button(void) {
 }
 
 ISR(PCINT0_vect) {
-    //leds_off();
-
-    if (!(PINB & (1 << PB1))) {
-
-        ADC_ToggleMux();
+    TOGGLE_INT;
+//    counterB = 0;
+    for(uint16_t i = 0; i < 600; i++){
+        
     }
+    if (!(PINB & (1 << PB1))) {
+        ADC_ToggleMux();
+        USART_Transmit(255);
+    }
+    TOGGLE_INT;
 }
 
 void ADC_ToggleMux(void) {

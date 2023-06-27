@@ -38,7 +38,10 @@ void leds_on(void) {
 void LEDs_React(double p) { // p = percentage-value
     leds_off();
 
-    if (p <= 11) {
+    if(p == 0){
+        leds_off();
+    }
+    if ((p > 0) && (p<= 11)) {
         PORTC |= (1 << 2);
     }
     if ((p > 11) && (p <= 22)) {
