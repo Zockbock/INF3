@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?> 
 <project>                                  
-  <executable name="dist/default/production/IoT_Project.X.production.elf">                 
+  <executable name="dist/default/debug/IoT_Project.X.debug.elf">                 
     <memory name="program">              
       <units>bytes</units>                 
       <length>32768</length>                 
-      <used>4014</used>                     
-      <free>28754</free>                     
+      <used>4018</used>                     
+      <free>28750</free>                     
     </memory>                              
     <memory name="data">                 
       <units>bytes</units>                 

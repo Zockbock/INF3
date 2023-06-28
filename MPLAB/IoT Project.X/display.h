@@ -23,6 +23,7 @@ void TFT_Window(U8 x1, U8 y1, U8 x2, U8 y2, U8 TFT_Orientation);
 void TFT_SPI_16BitPixelSend(U16 data);
 void TFT_Print(char* Text, U8 X, U8 Y, U8 Scale, U16 ForeColor, U16 BackColor, U8 Display_Orientation);
 void Display_init(void);
+void ClearDisplay(void);
 
 #endif	/* DISPLAY_H */
 

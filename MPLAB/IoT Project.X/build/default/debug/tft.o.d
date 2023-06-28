@@ -1,4 +1,4 @@
-build/default/production/tft.o.d build/default/production/tft.o: tft.c \
+build/default/debug/tft.o.d build/default/debug/tft.o: tft.c \
  c:\program\ files\microchip\xc8\v2.40\avr\avr\include\avr\io.h \
  c:\program\ files\microchip\xc8\v2.40\avr\avr\include\avr\sfr_defs.h \
  c:\program\ files\microchip\xc8\v2.40\avr\avr\include\inttypes.h \
