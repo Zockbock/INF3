@@ -24,6 +24,12 @@ void TFT_SPI_16BitPixelSend(U16 data);
 void TFT_Print(char* Text, U8 X, U8 Y, U8 Scale, U16 ForeColor, U16 BackColor, U8 Display_Orientation);
 void Display_init(void);
 void ClearDisplay(void);
+void Draw_Top_Rec(void);
+void Draw_Bot_Rec(void);
+void Draw_Mode_Rec(void);
+void Draw_Percentage_Rec(void);
+void Draw_CurrentMode(char* mode);
+void Draw_CurrentPercentage(char* percentage);
 
 #endif	/* DISPLAY_H */
 

@@ -24,7 +24,7 @@ void init_button(void) {
 ISR(PCINT0_vect) {
     TOGGLE_INT;
 //    counterB = 0;
-    for(uint16_t i = 0; i < 600; i++){
+    for(uint16_t i = 0; i < 200; i++){
         
     }
     if (!(PINB & (1 << PB1))) {
