@@ -6,10 +6,6 @@
 #define BAUD 9600
 #define MYUBRR FOSC/16/BAUD-1
 
-//void main(void) {
-//    USART_Init(MYUBRR);
-//}
-
 void USART_Init(unsigned int ubrr) {
     /*Set baud rate */
     UBRR0H = (unsigned char) (ubrr >> 8);

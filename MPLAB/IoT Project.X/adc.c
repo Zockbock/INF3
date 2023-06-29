@@ -39,37 +39,22 @@ void init_adc(void) {
 
 }
 
-int test;
-
 ISR(ADC_vect) {
     if (ADMUX & (1 << MUX0)) {
         adcVal = ADCH;
     } else {
-//        adcVal = ADC;
-        counter++;
-        if (counter == 1) {
-            min = 255;
-            max = 0;
-        } else if (counter <= 10) {
-            min = MIN(min, ADC);
-            max = MAX(max, ADC);
-        } else {
-            counter = 0;
-            adcVal = (max - min);
-//            USART_Transmit(adcVal);
-        }
-        
-//        if(counter <= 10) {
-//            data += ADCH;
-//        } else {
-//            data /= 10;
-////            adcVal = (data + 83.2073) / 11.003; //Convert ADC value to dB using Regression values
-//            adcVal = data;
-//            counter = 0;
-//            data = 0;
-//        }
+        adcVal = (ADC >> 1);
 //        counter++;
-
+//        if (counter == 1) {
+//            min = 255;
+//            max = 0;
+//        } else if (counter <= 10) {
+//            min = MIN(min, (ADC >> 1));
+//            max = MAX(max, (ADC >> 1));
+//        } else {
+//            counter = 0;
+//            adcVal = (max - min);
+//        }
     }
 }
 

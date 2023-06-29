@@ -28,6 +28,7 @@
 #define TFT_16BitRed	        	0xF800
 #define TFT_16BitBlue		    	0x331F
 #define TFT_16BitWhite 		    	0xFFFF
+#define TFT_16BitGrey 		    	0xC638
 
 //Pixel-Anzahl des Displays
 #define TFT_MAX_X  131

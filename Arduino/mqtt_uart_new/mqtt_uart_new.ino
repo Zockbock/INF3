@@ -19,7 +19,7 @@ unsigned char mode;
 unsigned char percentage = 0;
 unsigned char nextPercentage= 0;
 unsigned char modeChange = 0;
-unsigned char modeChangeIndicator = 101;
+unsigned char modeChangeIndicator = 105;
 
 ///////please enter your sensitive data in the Secret tab/arduino_secrets.h
 char ssid[] = SECRET_SSID;        // your network SSID
@@ -43,6 +43,7 @@ unsigned long previousMillis = 0;
 int count = 0;
 
 void setup() {
+
 
   // ------------------- [SUBSCRIBER] ---------------
   //Initialize serial and wait for port to open:
@@ -98,6 +99,10 @@ void setup() {
   Serial.println(topic2subscribe2);
 
   Serial.println();
+
+
+  Serial.println(illuminence);
+  Serial.println(audio);
   // ------------------- [SUBSCRIBER] ---------------
 }
 
@@ -111,9 +116,11 @@ void loop() {
   if (Serial.available())
   {
     unsigned char receivedData = Serial.read();
+    //delay(50);
 
     if(receivedData == 255){
       changeMode();
+      Serial.println(currentMode);
     } 
     // Do something with received data
     if(currentMode == illuminence){
@@ -206,6 +213,7 @@ void checkMode(unsigned char m){
 }
 
 void changeMode(){
+  Serial.print(currentMode == audio);
   if(currentMode == audio){
     currentMode = illuminence;
   }

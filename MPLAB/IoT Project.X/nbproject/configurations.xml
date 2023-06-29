@@ -11,6 +11,7 @@
       <itemPath>display.h</itemPath>
       <itemPath>tft.h</itemPath>
       <itemPath>spi.h</itemPath>
+      <itemPath>string.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -26,6 +27,7 @@
       <itemPath>adc.c</itemPath>
       <itemPath>display.c</itemPath>
       <itemPath>tft.c</itemPath>
+      <itemPath>string.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

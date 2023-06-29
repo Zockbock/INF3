@@ -4,13 +4,6 @@
 #include "display.h"
 #include "tft.h"
 
-//#define SPI_DDR DDRB
-//#define CS      PINB2
-//#define MOSI    PINB3
-//#define SCK     PINB5
-//#define D_C		PIND2		//display: Data/Command
-//#define Reset	PIND3		//display: Reset
-
 char str_mode[] = "Mode:";
 char str_percentage[] = "%";
 
@@ -176,10 +169,10 @@ void TFT_Window(U8 x1, U8 y1, U8 x2, U8 y2, U8 TFT_Orientation) {
             break;
         case TFT_Landscape:
             data[1] |= 0x05; //Querformat
-            data[2] |= TFT_MAX_X - y1;//(y1 > TFT_MAX_X ? TFT_MAX_X : y1);   //X1
-            data[3] |= TFT_MAX_X - y2;//(y2 > TFT_MAX_X ? TFT_MAX_X : y2);   //X2
-            data[4] |= x1;                                              //Y1
-            data[5] |= x2;                                              //Y2
+            data[2] |= TFT_MAX_X - y1; //(y1 > TFT_MAX_X ? TFT_MAX_X : y1);   //X1
+            data[3] |= TFT_MAX_X - y2; //(y2 > TFT_MAX_X ? TFT_MAX_X : y2);   //X2
+            data[4] |= x1; //Y1
+            data[5] |= x2; //Y2
             break;
         case TFT_Landscape180:
             data[1] |= 0x06; //Querformat um 180? gedreht
@@ -307,47 +300,54 @@ void Display_init(void) {
     SendCommandSeq(&InitData[2], 10);
     _delay_ms(75);
     SendCommandSeq(&InitData[12], 23);
-//    DDRD |= (1 << D_C) | (1 << Reset); //output: PD2 -> Data/Command; PD3 -> Reset
 }
 
 void ClearDisplay(void) {
     TFT_Window(0, 0, TFT_MAX_Y, TFT_MAX_X, TFT_Landscape);
     for (int i = 0; i <= (132 * 176); i++) {
-        TFT_SPI_16BitPixelSend(TFT_16BitOrange);
+        TFT_SPI_16BitPixelSend(TFT_16BitGrey);
     }
 }
 
 // Top Rectangle (mode-field)
-void Draw_Top_Rec(void){
-    TFT_Window(19,9,155,50, TFT_Landscape);        // 136pix * 41pix 
-    for (int i = 0; i <= (137*42); i++) {
+
+void Draw_Top_Rec(void) {
+    TFT_Window(19, 9, 155, 50, TFT_Landscape); // 136pix * 41pix 
+    for (int i = 0; i <= (137 * 42); i++) {
         TFT_SPI_16BitPixelSend(TFT_16BitBlue);
     }
 }
 
 // Bottom Rectangle (percentage-field)
-void Draw_Bot_Rec(void){
-    TFT_Window(19,60,155,121, TFT_Landscape);        // 136pix * 61pix 
-    for (int i = 0; i <= (137*62); i++) {
+
+void Draw_Bot_Rec(void) {
+    TFT_Window(19, 60, 155, 121, TFT_Landscape); // 136pix * 61pix 
+    for (int i = 0; i <= (137 * 62); i++) {
         TFT_SPI_16BitPixelSend(TFT_16BitBlue);
     }
 }
 
-void Draw_Mode_Rec(void){
-    // void TFT_Print(char* Text, U8 X, U8 Y, U8 Scale, U16 ForeColor, U16 BackColor, U8 Display_Orientation)
+void Draw_Bot_Rec2(void) {
+    TFT_Window(19, 60, 105, 121, TFT_Landscape); // 136pix * 61pix 
+    for (int i = 0; i <= (87 * 62); i++) {
+        TFT_SPI_16BitPixelSend(TFT_16BitBlue);
+    }
+}
+
+void Draw_Mode_Rec(void) {
     TFT_Print(str_mode, 44, 29, 1, TFT_16BitWhite, TFT_16BitBlue, TFT_Landscape);
 }
 
-void Draw_Percentage_Rec(void){
-    // void TFT_Print(char* Text, U8 X, U8 Y, U8 Scale, U16 ForeColor, U16 BackColor, U8 Display_Orientation)
-    TFT_Print(str_percentage, 126, 83, 2, TFT_16BitWhite, TFT_16BitBlue, TFT_Landscape);
+void Draw_Percentage_Rec(void) {
+    TFT_Print(str_percentage, 126, 83, 3, TFT_16BitWhite, TFT_16BitBlue, TFT_Landscape);
 }
 
-void Draw_CurrentMode(char* mode){
-    TFT_Print(mode, 86, 29, 1, TFT_16BitWhite, TFT_16BitBlue, TFT_Landscape);
+void Draw_CurrentMode(char* mode) {
+    TFT_Print(mode, 80, 29, 1, TFT_16BitWhite, TFT_16BitBlue, TFT_Landscape);
 }
 
-// Draw_CurrentPercentage(PercentageToString(currentPercentage));
-void Draw_CurrentPercentage(char* percentage){  // ToDo: char* PercentageToString(unsigned char p){ return p_str } returns p as string
-    TFT_Print(percentage, 44, 83, 2, TFT_16BitWhite, TFT_16BitBlue, TFT_Landscape);
+void Draw_CurrentPercentage(char* percentage) {
+    Draw_Bot_Rec2();
+    Draw_Percentage_Rec();
+    TFT_Print(percentage, 44, 83, 3, TFT_16BitWhite, TFT_16BitBlue, TFT_Landscape);
 }

@@ -4,10 +4,14 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/Uni/Repo/INF3/MPLAB/IoT%20Project.X/main.c</file>
-            <file>file:/D:/Uni/Repo/INF3/MPLAB/IoT%20Project.X/button.c</file>
+            <file>file:/D:/Uni/Repo/INF3/MPLAB/IoT%20Project.X/tft.h</file>
             <file>file:/D:/Uni/Repo/INF3/MPLAB/IoT%20Project.X/display.c</file>
+            <file>file:/D:/Uni/Repo/INF3/MPLAB/IoT%20Project.X/string.c</file>
+            <file>file:/D:/Uni/Repo/INF3/MPLAB/IoT%20Project.X/button.c</file>
             <file>file:/D:/Uni/Repo/INF3/MPLAB/IoT%20Project.X/usart.c</file>
             <file>file:/D:/Uni/Repo/INF3/MPLAB/IoT%20Project.X/led.h</file>
+            <file>file:/D:/Uni/Repo/INF3/MPLAB/IoT%20Project.X/display.h</file>
+            <file>file:/D:/Uni/Repo/INF3/MPLAB/IoT%20Project.X/string.h</file>
             <file>file:/D:/Uni/Repo/INF3/MPLAB/IoT%20Project.X/adc.c</file>
             <file>file:/D:/Uni/Repo/INF3/MPLAB/IoT%20Project.X/adc.h</file>
             <file>file:/D:/Uni/Repo/INF3/MPLAB/IoT%20Project.X/led.c</file>
