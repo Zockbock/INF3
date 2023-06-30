@@ -3,37 +3,37 @@
 #include <WiFiNINA.h>
 #include "arduino_secrets.h"
 
-#define SPIWIFI       SPI  // The SPI port
-#define SPIWIFI_SS    10   // Chip select pin
-#define ESP32_RESETN  5    // Reset pin
-#define SPIWIFI_ACK   7    // a.k.a BUSY or READY pin
-#define ESP32_GPIO0   -1
+#define SPIWIFI SPI     // The SPI port
+#define SPIWIFI_SS 10   // Chip select pin
+#define ESP32_RESETN 5  // Reset pin
+#define SPIWIFI_ACK 7   // a.k.a BUSY or READY pin
+#define ESP32_GPIO0 -1
 
 // values for UART communication:
-unsigned char currentMode = 'a'; // a = audio, i = illuminence
+unsigned char currentMode = 'a';  // a = audio, i = illuminence
 unsigned char audio = 'a';
 unsigned char illuminence = 'i';
 unsigned char illuminenceData = 0;
 unsigned char audioData = 0;
 unsigned char mode;
 unsigned char percentage = 0;
-unsigned char nextPercentage= 0;
+unsigned char nextPercentage = 0;
 unsigned char modeChange = 0;
 unsigned char modeChangeIndicator = 105;
 
 ///////please enter your sensitive data in the Secret tab/arduino_secrets.h
-char ssid[] = SECRET_SSID;        // your network SSID
-char pass[] = SECRET_PASS;    // your network password
+char ssid[] = SECRET_SSID;  // your network SSID
+char pass[] = SECRET_PASS;  // your network password
 
 WiFiClient wifiClient;
 MqttClient mqttClient(wifiClient);
 
 const char broker[] = "test.mosquitto.org";
-int        port     = 1883;
-const char topic2publish[]  = "room_illuminence";
-const char topic2publish2[]  = "room_volume";
-const char topic2subscribe[]  = "led_percentage";
-const char topic2subscribe2[]  = "led_mode";
+int port = 1883;
+const char topic2publish[] = "room_illuminence";
+const char topic2publish2[] = "room_volume";
+const char topic2subscribe[] = "led_percentage";
+const char topic2subscribe2[] = "led_mode";
 
 // ------------------- [PUBLISHER] ---------------
 //set interval for sending messages (milliseconds)
@@ -49,9 +49,10 @@ void setup() {
   //Initialize serial and wait for port to open:
   Serial.begin(9600);
   while (!Serial) {
-    ; // wait for serial port to connect. Needed for native USB port only
+    ;  // wait for serial port to connect. Needed for native USB port only
   }
   // attempt to connect to Wifi network:
+  Serial.println();
   Serial.print("Attempting to connect to SSID: ");
   Serial.println(ssid);
   while (WiFi.begin(ssid, pass) != WL_CONNECTED) {
@@ -70,7 +71,8 @@ void setup() {
     Serial.print("MQTT connection failed! Error code = ");
     Serial.println(mqttClient.connectError());
 
-    while (1);
+    while (1)
+      ;
   }
 
   Serial.println("You're connected to the MQTT broker!");
@@ -113,29 +115,28 @@ void loop() {
   mqttClient.poll();
   // ------------------- [SUBSCRIBER] ---------------
   // ------------------- [UART] ---------------
-  if (Serial.available())
-  {
+  if (Serial.available()) {
     unsigned char receivedData = Serial.read();
     //delay(50);
 
-    if(receivedData == 255){
+    if (receivedData == 255) {
       changeMode();
       Serial.println(currentMode);
-    } 
+    }
     // Do something with received data
-    if(currentMode == illuminence){
+    if (currentMode == illuminence) {
       illuminenceData = receivedData;
-    } else { // currentMode == audio
+    } else {  // currentMode == audio
       audioData = receivedData;
     }
-    if(Serial.availableForWrite()){
-      if(modeChange){
+    // if (Serial.availableForWrite()) {
+      if (modeChange) {
         Serial.write(modeChangeIndicator);
         modeChange = 0;
       } else {
         Serial.write(percentage);
       }
-    }
+    // }
     //Serial.write(currentMode);
   }
   // ------------------- [UART] ---------------
@@ -147,11 +148,11 @@ void loop() {
     // save the last time a message was sent
     previousMillis = currentMillis;
 
-    if(currentMode == illuminence){
+    if (currentMode == illuminence) {
       mqttClient.beginMessage(topic2publish);
       mqttClient.print(illuminenceData);
       mqttClient.endMessage();
-    } else { // currentMode == audio
+    } else {  // currentMode == audio
       mqttClient.beginMessage(topic2publish2);
       mqttClient.print(audioData);
       mqttClient.endMessage();
@@ -172,11 +173,11 @@ void onMqttMessage(int messageSize) {
 
   // use the Stream interface to print the contents
   while (mqttClient.available()) {
-    if(mqttClient.messageTopic() == "led_percentage"){ 
+    if (mqttClient.messageTopic() == "led_percentage") {
       nextPercentage = (unsigned char)mqttClient.read();
       checkPercentage(nextPercentage);
     }
-    if(mqttClient.messageTopic() == "led_mode"){
+    if (mqttClient.messageTopic() == "led_mode") {
       mode = (unsigned char)mqttClient.read();
       checkMode(mode);
     }
@@ -188,9 +189,9 @@ void onMqttMessage(int messageSize) {
 }
 // ------------------- [SUBSCRIBER] ---------------
 
- void checkPercentage2(unsigned char p){
-  if(p != percentage){
-    if(p>100){
+void checkPercentage2(unsigned char p) {
+  if (p != percentage) {
+    if (p > 100) {
       percentage = 100;
     } else {
       percentage = p;
@@ -201,9 +202,9 @@ void onMqttMessage(int messageSize) {
   }
 }
 
-void checkMode(unsigned char m){
-  if(m != currentMode){
-    if(m != audio && m != illuminence){
+void checkMode(unsigned char m) {
+  if (m != currentMode) {
+    if (m != audio && m != illuminence) {
     } else {
       modeChange = 1;
       currentMode = m;
@@ -212,26 +213,26 @@ void checkMode(unsigned char m){
   }
 }
 
-void changeMode(){
+void changeMode() {
   Serial.print(currentMode == audio);
-  if(currentMode == audio){
+  if (currentMode == audio) {
     currentMode = illuminence;
   }
-  if(currentMode == illuminence){
+  if (currentMode == illuminence) {
     currentMode = audio;
   }
 }
 
-void checkPercentage(unsigned char p){
-  if(p<=100 && p>=0){  // value in expected range
-    if(p != percentage){
+void checkPercentage(unsigned char p) {
+  if (p <= 100 && p >= 0) {  // value in expected range
+    if (p != percentage) {
       percentage = p;
     } else {
       Serial.print("no significant change, last transmitted percentage-value: ");
       Serial.println(percentage);
     }
   } else {
-    if(p>100){
+    if (p > 100) {
       percentage = 100;
     } else {
       percentage = 0;

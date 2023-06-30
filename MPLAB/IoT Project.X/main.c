@@ -20,8 +20,6 @@
 #define F_CPU 16000000UL
 #include <util/delay.h>
 
-
-
 void init(void) {
     init_button();
     init_led();
@@ -36,8 +34,6 @@ void init(void) {
     Display_init();
     ClearDisplay();
 }
-
-
 
 int main(void) {
     init();
@@ -61,15 +57,17 @@ int main(void) {
 
         if (receivedData > 100) { //105 -> modeChangeIndicator
             ADC_ToggleMux();
+            _delay_ms(50);
         } else { // percentage-value
             if (receivedData != dataStorage) {
                 LEDs_React(receivedData);
                 Draw_CurrentPercentage(PercentageToString(receivedData));
             }
-//            Draw_CurrentPercentage(PercentageToString(receivedData));
+            //            Draw_CurrentPercentage(PercentageToString(receivedData));
+            dataStorage = receivedData;
         }
 
-        dataStorage = receivedData;
+
         _delay_ms(100);
     }
 }
